@@ -72,7 +72,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
-  `mongodb+srv://astha:astha7788@cluster0.fzzcoie.mongodb.net/?retryWrites=true&w=majority`,
+  `xyz`,
   {
       useNewUrlParser: true,
       useUnifiedTopology: true,
