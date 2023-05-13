@@ -33,7 +33,7 @@ function StartChat() {
 
     const sendMessage = () => {
         const time = new Date();
-        const t = time.getHours() + ':' + time.getSeconds();
+        const t = time.getHours() + ':' + time.getMinutes();
         socket.emit('message', { reciever: username, message: messageInput, time: t, sentimentScore: score });
         setScore(score);
         setScore(0);
@@ -48,6 +48,7 @@ function StartChat() {
             review: e.target.value
         }).then(res => {
             //console.log(res);
+            setScore(res.data.analysis);
         }).catch(err => {
             console.log(err);
         })
@@ -62,7 +63,7 @@ function StartChat() {
             }
         }).then((res) => {
             console.log(res);
-            navigate(`/Report/${res.data.data._id}/${token}`);
+            navigate(`/Report/${res.data.data._id}/${token}/${username}`);
         }).catch(err => {
             console.log(err);
         })

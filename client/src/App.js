@@ -12,7 +12,7 @@ export default function App(){
         <Route  path="/" element={<Login/>}/>
         <Route  path="/StartChat/:username/:token" element={<StartChat/>}/>
         <Route path="/Signup" element={<Signup/>}/>
-        <Route path="/Report/:id/:token" element={<Report/>}/>
+        <Route path="/Report/:id/:token/:username" element={<Report/>}/>
       </Routes>
     </>
   )
