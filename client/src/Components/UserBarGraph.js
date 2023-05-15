@@ -44,7 +44,7 @@ const UserBarGraph = ({ data }) => {
 
   return (
     <div>
-      <canvas id="bar-chart" ref={chartRef} />
+      <canvas id="bar-chart" ref={chartRef}  className="w-[500px] h-[60vh]"/>
     </div>
   );
 };

@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import login from "../assets/login.png";
+import axios from "axios";
+
+
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const[fullname,setFullname]=useState("");
+  const[username,setUsername]=useState("");
+  const[phone,setPhone]=useState("");
+  const[password,setPassword]=useState("");
+
+  const submit=async()=>{
+    console.log("hiii");
+    await axios.post("http://localhost:3001/register",{
+      fullname: fullname,
+      username: username,
+      phone: phone,
+      password: password
+    }).then((res)=>{
+      alert("Account Created Successfully");
+      navigate("/");
+    }).catch((err)=>{
+      console.log(err);
+      alert("Error while creating account");
+    })
+  }
   return (
     <>
       <div className="flex flex-row justify-center items-center">
@@ -17,13 +42,14 @@ const Signup = () => {
             Create your account
           </h1>
 
-          <form className="flex flex-col items-center gap-4 bg-white p-5 rounded-md">
+          <div className="flex flex-col items-center gap-4 bg-white p-5 rounded-md">
             <div>
               <label className="text-base text-purple-700">FullName</label>
               <br />
               <input
                 type="text"
                 className="rounded-lg border-gray-400 h-10 focus:ring-pink-600"
+                onChange={(e)=>{setFullname(e.target.value)}}
               />
             </div>
 
@@ -33,6 +59,7 @@ const Signup = () => {
               <input
                 type="text"
                 className="rounded-lg border-gray-400 h-10 focus:ring-pink-600"
+                onChange={(e)=>{setUsername(e.target.value)}}
               />
             </div>
 
@@ -42,6 +69,7 @@ const Signup = () => {
               <input
                 type="password"
                 className="rounded-lg border-gray-400 h-10 focus:ring-pink-600"
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
             </div>
 
@@ -51,15 +79,16 @@ const Signup = () => {
               <input
                 type="number"
                 className="rounded-lg border-gray-400 h-10 focus:ring-pink-600"
+                onChange={(e)=>{setPhone(e.target.value)}}
               />
             </div>
 
-            <button className="mt-10 shadow bg-fuchsia-600 border-fuchsia-600 hover:bg-fuchsia-700 hover:fuchsia-teal-700 rounded-lg text-white px-4 py-2 font-medium w-40 lg:w-56">
+            <button className="mt-10 shadow bg-fuchsia-600 border-fuchsia-600 hover:bg-fuchsia-700 hover:fuchsia-teal-700 rounded-lg text-white px-4 py-2 font-medium w-40 lg:w-56" onClick={submit}>
               Register
             </button>
 
             {/* <p>Trouble logging in?</p> */}
-          </form>
+          </div>
         </div>
       </div>
     </>
