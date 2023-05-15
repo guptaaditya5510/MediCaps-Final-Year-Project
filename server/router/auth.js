@@ -40,8 +40,10 @@ app.route("/login").post(async (req, res) => {
 //api for signup
 
 app.route("/register").post(async (req, res) => {
+    console.log(req.body)
     const user = new userModel(req.body);
-    const checkUser = await userModel.find({ username: user.username })
+    const checkUser = await userModel.find({ username: req.body.username })
+    console.log(checkUser);
 
     try {
         if (checkUser.length == 0) {
