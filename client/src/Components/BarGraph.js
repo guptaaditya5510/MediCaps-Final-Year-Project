@@ -17,7 +17,7 @@ const BarGraph = ({ data }) => {
           {
             label: "BarGraph",
             data: data.map(obj => obj.score),
-            backgroundColor: data.map(obj => obj.score === 0 ? 'yellow' : obj.score > 0 ? 'green' : 'red'),
+            backgroundColor: data.map(obj => obj.score === 0 ? 'yellow' : obj.score > 0 ? '#1B9C85' : 'red'),
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
           },
